@@ -165,11 +165,14 @@ function renderAvailabilityCalendar(bookedDates = [], targetId = "availabilityCa
 }
 
 /* -----------------------------------------------------------
-   7. REVIEW WITH PHOTO PROOF
-   Reads a selected image as a data URL and shows a preview.
-   In production, upload the file to storage (e.g. Firebase/S3)
-   and save the resulting URL with the review record.
+   7. REVIEW WITH PHOTO PROOF (saved to Firestore only — free tier)
+   Photos are resized/compressed and stored as a small base64
+   string directly in the Firestore document, so no paid Storage
+   bucket is needed. Firestore documents allow up to 1MB, and a
+   compressed 400px-wide JPEG is typically well under 100KB.
 ------------------------------------------------------------ */
+let reviewPhotoDataUrl = null;
+
 function handleReviewPhoto(inputEl, previewId = "reviewPhotoPreview") {
   const file = inputEl.files[0];
   const preview = document.getElementById(previewId);
@@ -177,22 +180,60 @@ function handleReviewPhoto(inputEl, previewId = "reviewPhotoPreview") {
 
   const reader = new FileReader();
   reader.onload = e => {
-    preview.src = e.target.result;
-    preview.style.display = "block";
+    const img = new Image();
+    img.onload = () => {
+      // Resize to max 400px wide, compress as JPEG to keep it small
+      const maxWidth = 400;
+      const scale = Math.min(1, maxWidth / img.width);
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      reviewPhotoDataUrl = canvas.toDataURL("image/jpeg", 0.6);
+      preview.src = reviewPhotoDataUrl;
+      preview.style.display = "block";
+    };
+    img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-function submitReview() {
+async function submitReview(vendorId = "royal-catering") {
   const text = document.getElementById("reviewText").value.trim();
-  const hasPhoto = document.getElementById("reviewPhotoPreview").style.display === "block";
   if (!text) {
     alert("Please write a review before submitting.");
     return;
   }
-  alert(hasPhoto
-    ? "Review submitted with photo proof ✅ (Verified Review)"
-    : "Review submitted. Add a photo next time for a Verified Review badge!");
+
+  const user = auth.currentUser;
+  if (!user) {
+    alert("Please login before submitting a review.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  try {
+    await db.collection("reviews").add({
+      vendorId,
+      userId: user.uid,
+      userEmail: user.email,
+      text,
+      photoDataUrl: reviewPhotoDataUrl || null,
+      verified: !!reviewPhotoDataUrl,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    alert(reviewPhotoDataUrl
+      ? "Review submitted with photo proof ✅ (Verified Review)"
+      : "Review submitted. Add a photo next time for a Verified Review badge!");
+    document.getElementById("reviewText").value = "";
+    reviewPhotoDataUrl = null;
+  } catch (err) {
+    console.error(err);
+    alert("Could not submit review: " + err.message);
+  }
 }
 
 /* -----------------------------------------------------------
@@ -210,19 +251,103 @@ function mockEscrowPayment() {
 }
 
 /* -----------------------------------------------------------
-   Existing page functions (kept from earlier version)
+   AUTH: signup, login, logout (Firebase Authentication)
 ------------------------------------------------------------ */
+async function signup() {
+  const name = document.querySelector('input[placeholder="Full Name"]').value.trim();
+  const email = document.querySelector('input[placeholder="Email Address"]').value.trim();
+  const mobile = document.querySelector('input[placeholder="Mobile Number"]').value.trim();
+  const password = document.querySelector('input[placeholder="Password"]').value;
+
+  if (!name || !email || !password) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  try {
+    const cred = await auth.createUserWithEmailAndPassword(email, password);
+    await db.collection("users").doc(cred.user.uid).set({
+      name, email, mobile,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    alert("Signup successful! Redirecting to your profile...");
+    window.location.href = "profile.html";
+  } catch (err) {
+    alert("Signup failed: " + err.message);
+  }
+}
+
+async function loginUser(email, password) {
+  try {
+    await auth.signInWithEmailAndPassword(email, password);
+    window.location.href = "profile.html";
+  } catch (err) {
+    alert("Login failed: " + err.message);
+  }
+}
+
 function logout() {
-  localStorage.removeItem("fm_user");
-  window.location.href = "index.html";
+  auth.signOut().then(() => {
+    window.location.href = "index.html";
+  });
 }
 
-function signup() {
-  alert("Signup successful! (connect to backend/auth to make this real)");
+/* -----------------------------------------------------------
+   BOOKINGS (saved to Firestore)
+------------------------------------------------------------ */
+async function bookNow(vendorId = "royal-catering") {
+  const user = auth.currentUser;
+  if (!user) {
+    alert("Please login before booking.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  const forms = document.querySelectorAll("form input");
+  const eventDateInput = document.querySelector('input[type="date"]');
+
+  try {
+    await db.collection("bookings").add({
+      userId: user.uid,
+      userEmail: user.email,
+      vendorId,
+      eventDate: eventDateInput ? eventDateInput.value : null,
+      status: "pending",
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    alert("Booking request sent! You can track its status in My Bookings.");
+    window.location.href = "my-bookings.html";
+  } catch (err) {
+    alert("Booking failed: " + err.message);
+  }
 }
 
-function bookNow() {
-  alert("Booking request sent! (connect to backend to make this real)");
+/* -----------------------------------------------------------
+   LOAD MY BOOKINGS (for my-bookings.html)
+------------------------------------------------------------ */
+async function loadMyBookings(targetId = "bookingsContainer") {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  const user = auth.currentUser;
+  if (!user) {
+    el.innerHTML = "<p>Please login to see your bookings.</p>";
+    return;
+  }
+
+  const snapshot = await db.collection("bookings").where("userId", "==", user.uid).get();
+  if (snapshot.empty) {
+    el.innerHTML = "<p>No bookings yet. <a href='vendors.html'>Browse vendors</a></p>";
+    return;
+  }
+
+  el.innerHTML = snapshot.docs.map(doc => {
+    const b = doc.data();
+    return `<div class="card">
+      <h3>${b.vendorId}</h3>
+      <p><strong>Event Date:</strong> ${b.eventDate || "Not set"}</p>
+      <p><strong>Status:</strong> ${b.status}</p>
+    </div>`;
+  }).join("");
 }
 
 /* Run language init on every page load */
