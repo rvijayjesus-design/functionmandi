@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FunctionMandi - Local Event Vendor Booking</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background: #fdf6ec;
+      color: #333;
+    }
+
+    header {
+      background: #ff6f3c;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    section {
+      display: none;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      border-radius: 12px;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #d84315;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 25px;
+      color: #555;
+    }
+
+    .btn {
+      background: #d84315;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    h3.section-title {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #d84315;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card h4 {
+      color: #ff6f3c;
+      margin-bottom: 8px;
+    }
+
+    .card button {
+      margin-top: 10px;
+      background: #ff6f3c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    form label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    form button {
+      margin-top: 20px;
+      width: 100%;
+      background: #d84315;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .about-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .about-box h4 {
+      color: #d84315;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .about-box p {
+      margin: 6px 0;
+      color: #555;
+    }
+
+    .msg {
+      text-align: center;
+      color: green;
+      font-weight: 500;
+      margin-top: 15px;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ff6f3c;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FunctionMandi</h1>
+    <nav>
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('vendors')">Vendors</a>
+      <a onclick="showSection('login')">Login</a>
+      <a onclick="showSection('about')">About</a>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="active">
+    <div class="hero">
+      <h2>Book Local Event Vendors, Easily</h2>
+      <p>Find caterers, decorators, photographers and more for your function — all in one place.</p>
+      <a onclick="showSection('vendors')" class="btn">Explore Vendors</a>
+    </div>
+  </section>
+
+  <!-- VENDORS -->
+  <section id="vendors">
+    <h3 class="section-title">Popular Categories</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>🍛 Catering</h4>
+        <p>Local caterers for every budget</p>
+        <button onclick="bookVendor('Catering')">Book Now</button>
+      </div>
+      <div class="card">
+        <h4>🎉 Decoration</h4>
+        <p>Themes for weddings & events</p>
+        <button onclick="bookVendor('Decoration')">Book Now</button>
+      </div>
+      <div class="card">
+        <h4>📸 Photography</h4>
+        <p>Capture your special moments</p>
+        <button onclick="bookVendor('Photography')">Book Now</button>
+      </div>
+      <div class="card">
+        <h4>🎶 DJ & Music</h4>
+        <p>Sound & entertainment setup</p>
+        <button onclick="bookVendor('DJ & Music')">Book Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <h3 class="section-title">Book a Vendor</h3>
+    <form onsubmit="submitBooking(event)">
+      <label>Category</label>
+      <input type="text" id="bookingCategory" readonly />
+
+      <label>Your Name</label>
+      <input type="text" required placeholder="Enter your name" />
+
+      <label>Phone Number</label>
+      <input type="tel" required placeholder="Enter phone number" />
+
+      <label>Event Date</label>
+      <input type="date" required />
+
+      <label>Location</label>
+      <input type="text" required placeholder="Event location" />
+
+      <label>Additional Notes</label>
+      <textarea rows="3" placeholder="Any special requirements"></textarea>
+
+      <button type="submit">Confirm Booking</button>
+      <p class="msg" id="bookingMsg">✅ Booking request submitted!</p>
+    </form>
+  </section>
+
+  <!-- LOGIN -->
+  <section id="login">
+    <h3 class="section-title">Vendor / User Login</h3>
+    <form onsubmit="submitLogin(event)">
+      <label>Email</label>
+      <input type="email" required placeholder="Enter your email" />
+
+      <label>Password</label>
+      <input type="password" required placeholder="Enter password" />
+
+      <button type="submit">Login</button>
+      <p class="msg" id="loginMsg">✅ Logged in successfully!</p>
+    </form>
+    <p style="text-align:center; margin-top:15px; color:#555;">
+      New vendor? <a onclick="showSection('signup')" style="color:#d84315; cursor:pointer;">Sign up here</a>
+    </p>
+  </section>
+
+  <!-- SIGNUP -->
+  <section id="signup">
+    <h3 class="section-title">Vendor Sign Up</h3>
+    <form onsubmit="submitSignup(event)">
+      <label>Full Name</label>
+      <input type="text" required placeholder="Enter your name" />
+
+      <label>Business Name</label>
+      <input type="text" required placeholder="Enter business name" />
+
+      <label>Email</label>
+      <input type="email" required placeholder="Enter your email" />
+
+      <label>Password</label>
+      <input type="password" required placeholder="Create a password" />
+
+      <button type="submit">Sign Up</button>
+      <p class="msg" id="signupMsg">✅ Account created!</p>
+    </form>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h3 class="section-title">About</h3>
+    <div class="about-box">
+      <h4>Vijay Rajikhan</h4>
+      <p>Founder / Developer, FunctionMandi</p>
+      <p><!-- Replace this line with your native address --></p>
+      <p style="color:#999; font-size:0.9rem;">(Edit this section in index.html to add your address)</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 FunctionMandi. Made for local event bookings in India.</p>
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function bookVendor(category) {
+      document.getElementById('bookingCategory').value = category;
+      showSection('booking');
+    }
+
+    function submitBooking(e) {
+      e.preventDefault();
+      document.getElementById('bookingMsg').style.display = 'block';
+      e.target.reset();
+    }
+
+    function submitLogin(e) {
+      e.preventDefault();
+      document.getElementById('loginMsg').style.display = 'block';
+      e.target.reset();
+    }
+
+    function submitSignup(e) {
+      e.preventDefault();
+      document.getElementById('signupMsg').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>
