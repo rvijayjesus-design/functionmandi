@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FunctionMandi - Local Event Vendor Booking</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background: #fdf6ec;
+      color: #333;
+    }
+
+    header {
+      background: #ff6f3c;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #d84315;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 25px;
+      color: #555;
+    }
+
+    .btn {
+      background: #d84315;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .categories {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .categories h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #d84315;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card h4 {
+      color: #ff6f3c;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ff6f3c;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FunctionMandi</h1>
+    <nav>
+      <a href="#categories">Vendors</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Book Local Event Vendors, Easily</h2>
+    <p>Find caterers, decorators, photographers and more for your function — all in one place.</p>
+    <a href="#categories" class="btn">Explore Vendors</a>
+  </section>
+
+  <section class="categories" id="categories">
+    <h3>Popular Categories</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>🍛 Catering</h4>
+        <p>Local caterers for every budget</p>
+      </div>
+      <div class="card">
+        <h4>🎉 Decoration</h4>
+        <p>Themes for weddings & events</p>
+      </div>
+      <div class="card">
+        <h4>📸 Photography</h4>
+        <p>Capture your special moments</p>
+      </div>
+      <div class="card">
+        <h4>🎶 DJ & Music</h4>
+        <p>Sound & entertainment setup</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 FunctionMandi. Made for local event bookings in India.</p>
+  </footer>
+
+</body>
+</html>
