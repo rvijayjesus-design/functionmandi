@@ -6,19 +6,18 @@
 <title>Contact Us | FunctionMandi</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<header>
+<header class="site-header">
 <div class="logo">🎉 FunctionMandi</div>
-
-<nav>
+<button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<nav class="nav-links">
 <a href="index.html">Home</a>
 <a href="vendors.html">Vendors</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
+<a href="login.html">Login</a>
 </nav>
-
 </header>
 
 <section class="featured">
@@ -28,25 +27,17 @@
 <div class="card">
 
 <p><strong>📍 Address:</strong> Chennai, Tamil Nadu, India</p>
-
 <p><strong>📞 Phone:</strong> +91 98765 43210</p>
-
 <p><strong>📧 Email:</strong> support@functionmandi.com</p>
-
 <p><strong>🕒 Working Hours:</strong> Monday - Sunday | 9:00 AM - 9:00 PM</p>
 
 <h3>Send Us a Message</h3>
 
 <form>
-
 <input type="text" placeholder="Your Name" required><br><br>
-
 <input type="email" placeholder="Your Email" required><br><br>
-
 <textarea placeholder="Your Message" rows="5" required></textarea><br><br>
-
 <button type="submit" class="btn">Send Message</button>
-
 </form>
 
 </div>
@@ -60,4 +51,4 @@
 <script src="js/app.js"></script>
 
 </body>
-</html>
+  </html>
