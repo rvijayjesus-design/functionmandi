@@ -3,264 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FunctionMandi - Vendors</title>
+<title>FunctionMandi Vendors</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-background:#f5f5f5;
-}
-
-header{
-background:#ff6b00;
-color:#fff;
-padding:15px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-size:28px;
-font-weight:bold;
-}
-
-nav a{
-color:#fff;
-text-decoration:none;
-margin-left:20px;
-font-weight:bold;
-}
-
-nav a:hover{
-color:yellow;
-}
-
-.banner{
-background:linear-gradient(135deg,#ff6b00,#ff9800);
-padding:60px 20px;
-text-align:center;
-color:white;
-}
-
-.banner h1{
-font-size:40px;
-margin-bottom:10px;
-}
-
-.banner p{
-font-size:18px;
-margin-bottom:20px;
-}
-
-.search-box{
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.search-box input{
-padding:12px;
-width:320px;
-border:none;
-border-radius:8px;
-font-size:16px;
-}
-
-.search-box button{
-padding:12px 20px;
-background:#222;
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-.container{
-padding:40px 20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,.1);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.card-content{
-padding:20px;
-}
-
-.card h2{
-margin-bottom:10px;
-}
-
-.card p{
-margin-bottom:8px;
-}
-
-.card button{
-margin-top:10px;
-background:#ff6b00;
-color:white;
-border:none;
-padding:10px 20px;
-border-radius:6px;
-cursor:pointer;
-}
-</style>
+<script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body>
 
-<header>
-<div class="logo">FunctionMandi</div>
+<body class="bg-gray-100">
 
-<nav>
-<a href="index.html">Home</a>
-<a href="vendors.html">Vendors</a>
-<a href="login.html">Login</a>
-</nav>
+<header class="bg-orange-500 text-white text-center p-5 text-3xl font-bold">
+
+FunctionMandi Vendors
 
 </header>
 
-<section class="banner">
-<h1>Browse Vendors</h1>
-<p>Find the best vendors for your function</p>
+<div class="max-w-6xl mx-auto p-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-<div class="search-box">
-<input type="text" placeholder="Search vendors...">
-<button>Search</button>
-</div>
-
-</section>
-
-<div class="container">
-
-<div class="grid">
-<div class="card">
-<img src="https://picsum.photos/400/250?random=11">
-<div class="card-content">
-<h2>Royal Catering</h2>
-<p>⭐ 4.9</p>
-<p>🍽 Wedding & Party Catering</p>
-<p><b>Starting ₹500 / Plate</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://picsum.photos/400/250?random=12">
-<div class="card-content">
-<h2>Dream Photography</h2>
+<div class="bg-white rounded-xl shadow p-5">
+<h2 class="text-xl font-bold">Royal Catering</h2>
+<p>📍 Chennai</p>
 <p>⭐ 4.8</p>
-<p>📸 Wedding Photography</p>
-<p><b>Starting ₹25,000</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
+<a href="https://wa.me/919999999999" class="bg-green-500 text-white px-4 py-2 rounded inline-block mt-3">WhatsApp</a>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/400/250?random=13">
-<div class="card-content">
-<h2>Elite Decoration</h2>
+<div class="bg-white rounded-xl shadow p-5">
+<h2 class="text-xl font-bold">Dream Photography</h2>
+<p>📍 Bangalore</p>
 <p>⭐ 4.9</p>
-<p>🎉 Stage Decoration</p>
-<p><b>Starting ₹15,000</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
+<a href="https://wa.me/919999999999" class="bg-green-500 text-white px-4 py-2 rounded inline-block mt-3">WhatsApp</a>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/400/250?random=14">
-<div class="card-content">
-<h2>DJ Beats</h2>
+<div class="bg-white rounded-xl shadow p-5">
+<h2 class="text-xl font-bold">Elite Decorations</h2>
+<p>📍 Hyderabad</p>
 <p>⭐ 4.7</p>
-<p>🎵 DJ & Sound System</p>
-<p><b>Starting ₹10,000</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
+<a href="https://wa.me/919999999999" class="bg-green-500 text-white px-4 py-2 rounded inline-block mt-3">WhatsApp</a>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/400/250?random=15">
-<div class="card-content">
-<h2>Makeup Studio</h2>
+<div class="bg-white rounded-xl shadow p-5">
+<h2 class="text-xl font-bold">DJ Thunder</h2>
+<p>📍 Mumbai</p>
 <p>⭐ 4.8</p>
-<p>💄 Bridal Makeup</p>
-<p><b>Starting ₹8,000</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
+<a href="https://wa.me/919999999999" class="bg-green-500 text-white px-4 py-2 rounded inline-block mt-3">WhatsApp</a>
 </div>
 
-<div class="card">
-<img src="https://picsum.photos/400/250?random=16">
-<div class="card-content">
-<h2>Flower World</h2>
+<div class="bg-white rounded-xl shadow p-5">
+<h2 class="text-xl font-bold">Luxury Wedding Hall</h2>
+<p>📍 Delhi</p>
 <p>⭐ 4.9</p>
-<p>🌸 Flower Decoration</p>
-<p><b>Starting ₹6,000</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
+<a href="https://wa.me/919999999999" class="bg-green-500 text-white px-4 py-2 rounded inline-block mt-3">WhatsApp</a>
 </div>
-</div>
-<div class="card">
-<img src="https://picsum.photos/400/250?random=17">
-<div class="card-content">
-<h2>Classic Events</h2>
+
+<div class="bg-white rounded-xl shadow p-5">
+<h2 class="text-xl font-bold">Star Makeup Studio</h2>
+<p>📍 Kolkata</p>
 <p>⭐ 4.8</p>
-<p>🎪 Event Management</p>
-<p><b>Starting ₹20,000</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://picsum.photos/400/250?random=18">
-<div class="card-content">
-<h2>Sweet Cakes</h2>
-<p>⭐ 4.9</p>
-<p>🎂 Custom Cakes</p>
-<p><b>Starting ₹2,500</b></p>
-<button onclick="location.href='vendor-details.html'">View Details</button>
-</div>
+<a href="https://wa.me/919999999999" class="bg-green-500 text-white px-4 py-2 rounded inline-block mt-3">WhatsApp</a>
 </div>
 
 </div>
-</div>
-
-<footer style="background:#222;color:white;text-align:center;padding:20px;margin-top:40px;">
-<h3>FunctionMandi</h3>
-<p>Your One-Stop Event Booking Platform</p>
-<p>© 2026 FunctionMandi. All Rights Reserved.</p>
-</footer>
 
 </body>
 </html>
-
-
-  
-  
