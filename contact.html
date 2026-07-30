@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us | FunctionMandi</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/features.css">
 </head>
 <body>
 
@@ -12,35 +13,52 @@
 <div class="logo">🎉 FunctionMandi</div>
 <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
 <nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="vendors.html">Vendors</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+<a href="index.html" data-i18n="home">Home</a>
+<a href="vendors.html" data-i18n="vendors">Vendors</a>
+<a href="about.html" data-i18n="about">About</a>
+<a href="contact.html" data-i18n="contact">Contact</a>
+<a href="login.html" data-i18n="login">Login</a>
+<select id="langSelect" class="lang-select" onchange="applyLanguage(this.value)">
+<option value="en">English</option>
+<option value="ta">தமிழ்</option>
+<option value="te">తెలుగు</option>
+<option value="hi">हिंदी</option>
+</select>
 </nav>
 </header>
 
 <section class="featured">
 
 <h1>Contact Us</h1>
+<p>Have a question or need help with a booking? Reach out to us.</p>
+
+<div class="grid" style="margin-top:20px;">
 
 <div class="card">
+<h3>📧 Email</h3>
+<p>support@functionmandi.com</p>
+</div>
 
-<p><strong>📍 Address:</strong> Chennai, Tamil Nadu, India</p>
-<p><strong>📞 Phone:</strong> +91 98765 43210</p>
-<p><strong>📧 Email:</strong> support@functionmandi.com</p>
-<p><strong>🕒 Working Hours:</strong> Monday - Sunday | 9:00 AM - 9:00 PM</p>
+<div class="card">
+<h3>📞 Phone</h3>
+<p>+91 98765 43210</p>
+</div>
 
-<h3>Send Us a Message</h3>
+<div class="card">
+<h3>📍 Office</h3>
+<p>Chennai, Tamil Nadu, India</p>
+</div>
 
+</div>
+
+<h2 style="margin-top:32px;">Send us a Message</h2>
 <form>
 <input type="text" placeholder="Your Name" required><br><br>
 <input type="email" placeholder="Your Email" required><br><br>
-<textarea placeholder="Your Message" rows="5" required></textarea><br><br>
-<button type="submit" class="btn">Send Message</button>
+<input type="tel" placeholder="Mobile Number"><br><br>
+<textarea placeholder="Your Message"></textarea><br><br>
+<button type="button" class="btn" onclick="alert('Message sent! We will get back to you soon.')">Send Message</button>
 </form>
-
-</div>
 
 </section>
 
@@ -51,4 +69,4 @@
 <script src="js/app.js"></script>
 
 </body>
-  </html>
+</html>

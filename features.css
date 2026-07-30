@@ -1,0 +1,136 @@
+/* ===========================================================
+   FunctionMandi - css/features.css
+   Add-on styles for the new features. Link this AFTER style.css:
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/features.css">
+   =========================================================== */
+
+/* Language selector */
+.lang-select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Verified badge */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.badge-verified {
+  background: #e3f7e8;
+  color: #1a7f37;
+}
+.badge-pending {
+  background: #fff4e0;
+  color: #b26a00;
+}
+
+/* Near-me search */
+.area-search {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+.area-search input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.area-search button {
+  white-space: nowrap;
+}
+
+/* Quote calculator */
+.quote-box {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px 0;
+  background: #fafafa;
+}
+.quote-box label {
+  display: block;
+  margin: 8px 0 4px;
+}
+#qResult {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+  color: #d1401f;
+}
+
+/* Auspicious dates */
+.chip {
+  display: inline-block;
+  background: #fff0e6;
+  color: #b3441d;
+  padding: 6px 12px;
+  border-radius: 16px;
+  margin: 4px;
+  font-size: 13px;
+}
+
+/* Availability calendar */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+.cal-day {
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.cal-free {
+  background: #e3f7e8;
+  color: #1a7f37;
+}
+.cal-booked {
+  background: #fde3e3;
+  color: #b3261e;
+}
+
+/* Review with photo */
+.review-box textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+#reviewPhotoPreview {
+  display: none;
+  max-width: 150px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+/* Escrow status */
+.escrow-held {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #eaf1ff;
+  color: #1a4fb3;
+  font-size: 14px;
+}
+
+/* Package bundle cards */
+.package-card {
+  border: 2px solid #ffd8b3;
+  border-radius: 10px;
+  padding: 16px;
+}
+.package-card h3 {
+  color: #d1401f;
+}

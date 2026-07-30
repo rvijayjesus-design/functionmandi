@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FunctionMandi - Vendors</title>
+<title>Vendors | FunctionMandi</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/features.css">
 </head>
 <body>
 
@@ -12,49 +13,66 @@
 <div class="logo">🎉 FunctionMandi</div>
 <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
 <nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="vendors.html">Vendors</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+<a href="index.html" data-i18n="home">Home</a>
+<a href="vendors.html" data-i18n="vendors">Vendors</a>
+<a href="about.html" data-i18n="about">About</a>
+<a href="contact.html" data-i18n="contact">Contact</a>
+<a href="login.html" data-i18n="login">Login</a>
+<select id="langSelect" class="lang-select" onchange="applyLanguage(this.value)">
+<option value="en">English</option>
+<option value="ta">தமிழ்</option>
+<option value="te">తెలుగు</option>
+<option value="hi">हिंदी</option>
+</select>
 </nav>
 </header>
 
 <section class="featured">
 
-<h2>Our Vendors</h2>
+<h1 data-i18n="vendors">Vendors</h1>
 
-<div class="grid">
+<div class="area-search">
+<input type="text" id="areaInput" placeholder="Filter by area or city" oninput="runVendorFilter()">
+<button type="button" class="btn" onclick="useMyLocationText('areaInput')" data-i18n="nearMe">Near My Area</button>
+</div>
 
-<div class="card">
+<div class="grid" id="vendorResults">
+
+<div class="card" data-area="Chennai">
 <h3>Royal Catering</h3>
-<p>⭐ 4.9</p>
-<p>Best Catering Service</p>
+<span class="badge badge-verified">✅ Verified Vendor</span>
+<p>⭐ 4.9 — Catering</p>
+<p>Chennai</p>
 <a href="vendor-details.html" class="btn">View Details</a>
 </div>
 
-<div class="card">
+<div class="card" data-area="Coimbatore">
 <h3>Dream Photography</h3>
-<p>⭐ 4.8</p>
-<p>Wedding Photography</p>
+<span class="badge badge-pending">⏳ Verification Pending</span>
+<p>⭐ 4.6 — Photography</p>
+<p>Coimbatore</p>
 <a href="vendor-details.html" class="btn">View Details</a>
 </div>
 
-<div class="card">
-<h3>Classic Decorators</h3>
-<p>⭐ 4.7</p>
-<p>Stage & Flower Decoration</p>
+<div class="card" data-area="Madurai">
+<h3>Elegant Decorators</h3>
+<span class="badge badge-verified">✅ Verified Vendor</span>
+<p>⭐ 4.8 — Decoration</p>
+<p>Madurai</p>
 <a href="vendor-details.html" class="btn">View Details</a>
 </div>
 
-<div class="card">
-<h3>DJ Beats</h3>
-<p>⭐ 4.8</p>
-<p>DJ & Sound Service</p>
+<div class="card" data-area="Trichy">
+<h3>Grand Banquet Hall</h3>
+<span class="badge badge-verified">✅ Verified Vendor</span>
+<p>⭐ 4.7 — Venue</p>
+<p>Trichy</p>
 <a href="vendor-details.html" class="btn">View Details</a>
 </div>
 
 </div>
+
+<p id="noResults" style="display:none;margin-top:16px;color:#777;">No vendors found in this area. Try a different search.</p>
 
 </section>
 
@@ -63,6 +81,20 @@
 </footer>
 
 <script src="js/app.js"></script>
+<script>
+function runVendorFilter() {
+  const query = document.getElementById("areaInput").value.trim().toLowerCase();
+  const cards = document.querySelectorAll("#vendorResults .card");
+  let visibleCount = 0;
+  cards.forEach(card => {
+    const area = (card.getAttribute("data-area") || "").toLowerCase();
+    const match = !query || area.includes(query);
+    card.style.display = match ? "" : "none";
+    if (match) visibleCount++;
+  });
+  document.getElementById("noResults").style.display = visibleCount === 0 ? "block" : "none";
+}
+</script>
 
 </body>
 </html>

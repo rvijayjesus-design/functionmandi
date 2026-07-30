@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vendor Details | FunctionMandi</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/features.css">
 </head>
 <body>
 
@@ -28,16 +29,36 @@
 
 <div class="card">
 <h3>Royal Catering</h3>
+<div id="verifiedBadge"></div>
 <p>⭐ 4.9</p>
 <p>Best Catering Service</p>
 <p>Contact: 9876543210</p>
 <p>Location: Chennai</p>
+
+<div class="area-search">
+<input type="text" id="areaInput" placeholder="Type your area to check service range">
+<button type="button" class="btn" onclick="useMyLocationText('areaInput')" data-i18n="nearMe">Near My Area</button>
+</div>
+
 <a href="vendors.html" class="btn">Back to Vendors</a>
+</div>
+
+<div class="card package-card">
+<h3>💍 Wedding Combo Package</h3>
+<p>Catering + Decoration + Photography bundled together</p>
+<p><strong>Starting at ₹1,25,000</strong></p>
+<a href="booking.html" class="btn">Book This Package</a>
 </div>
 
 </div>
 
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  renderVerifiedBadge(true); // true/false depending on real vendor verification status
+});
+</script>
 
 <footer>
 <p>© 2026 FunctionMandi. All Rights Reserved.</p>

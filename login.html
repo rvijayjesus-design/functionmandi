@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login | FunctionMandi</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/features.css">
 </head>
 <body>
 
@@ -12,32 +13,39 @@
 <div class="logo">🎉 FunctionMandi</div>
 <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
 <nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="vendors.html">Vendors</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a href="login.html">Login</a>
+<a href="index.html" data-i18n="home">Home</a>
+<a href="vendors.html" data-i18n="vendors">Vendors</a>
+<a href="about.html" data-i18n="about">About</a>
+<a href="contact.html" data-i18n="contact">Contact</a>
+<a href="login.html" data-i18n="login">Login</a>
+<select id="langSelect" class="lang-select" onchange="applyLanguage(this.value)">
+<option value="en">English</option>
+<option value="ta">தமிழ்</option>
+<option value="te">తెలుగు</option>
+<option value="hi">हिंदी</option>
+</select>
 </nav>
 </header>
 
 <section class="featured">
 
-<h1>Login</h1>
-<p>Welcome back! Login to continue.</p>
+<h1>Login to FunctionMandi</h1>
+<p>Access your bookings, favorites, and profile.</p>
 
 <form>
-
-<input type="email" placeholder="Email" required><br><br>
-
+<input type="email" placeholder="Email Address" required><br><br>
 <input type="password" placeholder="Password" required><br><br>
-
-<button type="button" class="btn" onclick="login()">Login</button>
-
+<button type="button" class="btn" onclick="window.location.href='profile.html'">Login</button>
 </form>
 
-<p>
+<p style="margin-top:14px;">
 Don't have an account?
-<a href="signup.html">Sign Up</a>
+<a href="signup.html" style="color:#d1401f;font-weight:600;">Sign Up</a>
+</p>
+
+<p style="margin-top:6px;">
+Are you a vendor?
+<a href="vendor-register.html" style="color:#d1401f;font-weight:600;">Register as Vendor</a>
 </p>
 
 </section>
