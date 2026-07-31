@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | FunctionMandi</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+<div class="logo">🎉 FunctionMandi</div>
+<button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="vendors.html">Vendors</a>
+<a href="admin-login.html">Admin</a>
+</nav>
+</header>
+
+<section class="featured">
+
+<h1>Admin Dashboard</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>Total Users</h3>
+<h2>120</h2>
+</div>
+
+<div class="card">
+<h3>Total Vendors</h3>
+<h2>35</h2>
+</div>
+
+<div class="card">
+<h3>Total Bookings</h3>
+<h2>250</h2>
+</div>
+
+<div class="card">
+<h3>Pending Approvals</h3>
+<h2>8</h2>
+</div>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h2>Admin Controls</h2>
+
+<p>✅ Manage Users</p>
+<p>✅ Manage Vendors</p>
+<p>✅ View Bookings</p>
+<p>✅ Manage Payments</p>
+
+<a href="index.html" class="btn" onclick="logout()">Logout</a>
+
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 FunctionMandi. All Rights Reserved.</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

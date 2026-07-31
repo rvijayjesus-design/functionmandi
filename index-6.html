@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FunctionMandi | Book Trusted Event Vendors</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/features.css">
+</head>
+<body>
+
+<header class="site-header">
+<div class="logo">🎉 FunctionMandi</div>
+<button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+<nav class="nav-links">
+<a href="index.html" data-i18n="home">Home</a>
+<a href="vendors.html" data-i18n="vendors">Vendors</a>
+<a href="about.html" data-i18n="about">About</a>
+<a href="contact.html" data-i18n="contact">Contact</a>
+<a href="login.html" data-i18n="login">Login</a>
+<select id="langSelect" class="lang-select" onchange="applyLanguage(this.value)">
+<option value="en">English</option>
+<option value="ta">தமிழ்</option>
+<option value="te">తెలుగు</option>
+<option value="hi">हिंदी</option>
+</select>
+</nav>
+</header>
+
+<section class="featured">
+
+<h1>Find & Book Trusted Vendors for Every Event</h1>
+<p>Catering, decoration, photography and more — all in one place, verified and hassle-free.</p>
+
+<div class="area-search">
+<input type="text" id="areaInput" placeholder="Search by city or area (e.g. Chennai, Anna Nagar)">
+<button type="button" class="btn" onclick="useMyLocationText('areaInput')" data-i18n="nearMe">Near My Area</button>
+</div>
+
+<a href="vendors.html" class="btn">Browse Vendors</a>
+<a href="signup.html" class="btn">Sign Up</a>
+
+<h2 style="margin-top:36px;">Popular Categories</h2>
+<div class="grid">
+<div class="card">
+<h3>🍽️ Catering</h3>
+<p>Wedding, birthday & corporate catering services</p>
+</div>
+<div class="card">
+<h3>🎊 Decoration</h3>
+<p>Stage, floral & theme-based event decoration</p>
+</div>
+<div class="card">
+<h3>📸 Photography</h3>
+<p>Candid, traditional & drone photography teams</p>
+</div>
+<div class="card">
+<h3>🏛️ Venues</h3>
+<p>Marriage halls, banquet halls & outdoor lawns</p>
+</div>
+</div>
+
+<h2 style="margin-top:36px;">💍 Wedding Combo Package</h2>
+<div class="card package-card" style="max-width:400px;">
+<h3>All-in-One Wedding Bundle</h3>
+<p>Catering + Decoration + Photography together</p>
+<p><strong>Starting at ₹1,25,000</strong></p>
+<a href="booking.html" class="btn">Book This Package</a>
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 FunctionMandi. All Rights Reserved.</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
